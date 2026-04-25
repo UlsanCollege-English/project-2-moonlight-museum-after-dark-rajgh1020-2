@@ -294,15 +294,15 @@ def demo_museum_night() -> None:
     print("=== Moonlight Museum After Dark ===\n")
 
     artifacts = [
-        Artifact(5,  "Cursed Mirror",      "Cursed",       400, "Hall of Shadows"),
-        Artifact(3,  "Clockwork Bird",     "Mechanical",   120, "Gear Room"),
-        Artifact(7,  "Whispering Map",     "Enchanted",    250, "Map Vault"),
-        Artifact(1,  "Glowing Key",        "Enchanted",     80, "Key Chamber"),
-        Artifact(9,  "Phantom Lantern",    "Cursed",       310, "Hall of Shadows"),
-        Artifact(4,  "Ivory Compass",      "Navigational", 190, "Map Vault"),
-        Artifact(6,  "Bronze Sundial",     "Mechanical",   500, "Gear Room"),
-        Artifact(2,  "Silk Star Chart",    "Navigational",  60, "Map Vault"),
-        Artifact(8,  "Frozen Hourglass",   "Cursed",       730, "Time Tower"),
+        Artifact(5, "Cursed Mirror",    "Cursed",       400, "Hall of Shadows"),
+        Artifact(3, "Clockwork Bird",   "Mechanical",   120, "Gear Room"),
+        Artifact(7, "Whispering Map",   "Enchanted",    250, "Map Vault"),
+        Artifact(1, "Glowing Key",      "Enchanted",     80, "Key Chamber"),
+        Artifact(9, "Phantom Lantern",  "Cursed",       310, "Hall of Shadows"),
+        Artifact(4, "Ivory Compass",    "Navigational", 190, "Map Vault"),
+        Artifact(6, "Bronze Sundial",   "Mechanical",   500, "Gear Room"),
+        Artifact(2, "Silk Star Chart",  "Navigational",  60, "Map Vault"),
+        Artifact(8, "Frozen Hourglass", "Cursed",       730, "Time Tower"),
     ]
 
     # --- BST ---
@@ -310,9 +310,9 @@ def demo_museum_night() -> None:
     for a in artifacts:
         bst.insert(a)
 
-    print("Inorder IDs (sorted):", bst.inorder_ids())
-    print("Preorder IDs:        ", bst.preorder_ids())
-    print("Postorder IDs:       ", bst.postorder_ids())
+    print("Inorder IDs:", bst.inorder_ids())
+    print("Preorder IDs:", bst.preorder_ids())
+    print("Postorder IDs:", bst.postorder_ids())
 
     found = bst.search_by_id(7)
     print(f"\nSearch ID 7:  {found.name if found else 'Not found'}")
@@ -326,9 +326,9 @@ def demo_museum_night() -> None:
     queue.add_request(RestorationRequest(3, "Oil gears"))
 
     print(f"\nQueue size: {queue.size()}")
-    print(f"Peek:       {queue.peek_next_request().description}")
-    print(f"Processed:  {queue.process_next_request().description}")
-    print(f"Processed:  {queue.process_next_request().description}")
+    print(f"Next restoration request: {queue.peek_next_request().description}")
+    print(f"Processed: {queue.process_next_request().description}")
+    print(f"Processed: {queue.process_next_request().description}")
     print(f"Queue size after processing: {queue.size()}")
 
     # --- Undo stack (LIFO) ---
@@ -339,8 +339,8 @@ def demo_museum_night() -> None:
 
     print(f"\nStack size: {stack.size()}")
     print(f"Peek: {stack.peek_last_action()}")
-    print(f"Undo: {stack.undo_last_action()}")
-    print(f"Undo: {stack.undo_last_action()}")
+    print(f"Undo action: {stack.undo_last_action()}")
+    print(f"Undo action: {stack.undo_last_action()}")
     print(f"Stack size after undo: {stack.size()}")
 
     # --- Exhibit route ---
@@ -348,14 +348,14 @@ def demo_museum_night() -> None:
     for stop in ["Entrance", "Key Chamber", "Gear Room", "Map Vault", "Hall of Shadows", "Time Tower"]:
         route.add_stop(stop)
 
-    print(f"\nFull route:              {route.list_stops()}")
-    print(f"Stop count:              {route.count_stops()}")
+    print(f"\nExhibit route: {route.list_stops()}")
+    print(f"Stop count: {route.count_stops()}")
     route.remove_stop("Gear Room")
     print(f"After removing Gear Room: {route.list_stops()}")
 
     # --- Reports ---
     print(f"\nCategory counts: {count_artifacts_by_category(artifacts)}")
-    print(f"Unique rooms:    {unique_rooms(artifacts)}")
+    print(f"Unique rooms: {unique_rooms(artifacts)}")
 
     sorted_asc = sort_artifacts_by_age(artifacts)
     sorted_desc = sort_artifacts_by_age(artifacts, descending=True)
